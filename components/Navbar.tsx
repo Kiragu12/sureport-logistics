@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
 
   const handleNavigation = (path: string, isScroll: boolean, id?: string) => {
     setIsOpen(false);
-    
+
     if (isScroll && id) {
       if (location.pathname === '/') {
         // We are already on home, just scroll
@@ -33,9 +33,9 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Home', path: '/', isScroll: false },
     { label: 'Services', path: '/', isScroll: true, id: 'services' },
-    { label: 'How it Works', path: '/', isScroll: true, id: 'how-it-works' },
-    { label: 'Prohibited Items', path: '/prohibited', isScroll: false },
+    { label: 'FAQ', path: '/faq', isScroll: false },
     { label: 'About Us', path: '/about', isScroll: false },
+    { label: 'Contact', path: '/contact', isScroll: false },
   ];
 
   return (
@@ -44,9 +44,9 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-28">
           {/* Logo */}
           <Link to="/" className="flex items-center group py-2">
-            <img 
-              src="/logo.png" 
-              alt="Sureport Logistics" 
+            <img
+              src="/logo.png"
+              alt="Sureport Logistics"
               className="h-20 w-auto object-contain transition-transform transform group-hover:scale-105"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
@@ -55,13 +55,13 @@ const Navbar: React.FC = () => {
             />
             {/* Fallback Logo */}
             <div className="hidden flex items-center space-x-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg">
-                    <span className="font-heading font-bold text-xl">S</span>
-                </div>
-                <div className="flex flex-col">
-                    <span className="font-heading font-extrabold text-xl text-primary leading-tight tracking-tight">SUREPORT</span>
-                    <span className="font-sans text-[10px] tracking-[0.25em] text-accent font-bold uppercase">Logistics</span>
-                </div>
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg">
+                <span className="font-heading font-bold text-xl">S</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-heading font-extrabold text-xl text-primary leading-tight tracking-tight">SUREPORT</span>
+                <span className="font-sans text-[10px] tracking-[0.25em] text-accent font-bold uppercase">Logistics</span>
+              </div>
             </div>
           </Link>
 
@@ -71,28 +71,26 @@ const Navbar: React.FC = () => {
               <button
                 key={link.label}
                 onClick={() => handleNavigation(link.path, link.isScroll, link.id)}
-                className={`font-semibold text-sm transition-colors relative group ${
-                  (!link.isScroll && isActive(link.path)) ? 'text-primary' : 'text-secondary hover:text-primary'
-                }`}
+                className={`font-semibold text-sm transition-colors relative group ${(!link.isScroll && isActive(link.path)) ? 'text-primary' : 'text-secondary hover:text-primary'
+                  }`}
               >
                 {link.label}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all ${
-                  (!link.isScroll && isActive(link.path)) ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all ${(!link.isScroll && isActive(link.path)) ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
               </button>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-6">
-             <div className="flex items-center text-secondary text-sm font-semibold">
-                <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center mr-2">
-                    <Phone className="w-4 h-4 text-accent" />
-                </div>
-                <span>+254 704 515905</span>
-             </div>
-            <Link 
-              to="/quote" 
+            <div className="flex items-center text-secondary text-sm font-semibold">
+              <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center mr-2">
+                <Phone className="w-4 h-4 text-accent" />
+              </div>
+              <span>+254 704 515905</span>
+            </div>
+            <Link
+              to="/quote"
               className="bg-accent hover:bg-accentHover text-white px-7 py-3 rounded-full font-heading font-bold text-sm shadow-lg shadow-orange-500/20 transition-all transform hover:-translate-y-0.5"
             >
               Get a Quote
@@ -101,7 +99,7 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-primary focus:outline-none p-2"
             >
@@ -125,7 +123,7 @@ const Navbar: React.FC = () => {
               </button>
             ))}
             <div className="pt-4 mt-4 border-t border-gray-100">
-               <Link 
+              <Link
                 to="/quote"
                 className="block w-full text-center bg-accent text-white px-4 py-3.5 rounded-xl font-heading font-bold"
                 onClick={() => setIsOpen(false)}
